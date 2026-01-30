@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Fundo Palmira | Restaurante Campestre</title>
+  <link rel="icon" href="images/favico.ico"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+
+<body>
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <div class="topbar__left">
+        <span class="badge" id="openBadge">Horario</span>
+        <span class="muted" id="todayHours">—</span>
+      </div>
+      <div class="topbar__right">
+        <a class="btn btn--ghost" id="btnCall" href="#">📞 Llamar</a>
+        <a class="btn btn--wa" id="btnWhatsTop" href="#" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="#inicio">
+        <div class="brand__logo">🌿</div>
+        <div class="brand__txt">
+          <div class="brand__name" id="bizName">Fundo Palmira</div>
+          <div class="brand__tag">Restaurante Campestre • Huacho</div>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="#menu">Carta</a>
+        <a href="#experiencia">Experiencia</a>
+        <a href="#galeria">Galería</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#ubicacion">Ubicación</a>
+      </nav>
+
+      <div class="header__actions">
+        <a class="btn btn--primary" href="#menu">Ver carta</a>
+        <a class="btn btn--wa" id="btnWhatsHeader" href="#" target="_blank" rel="noopener">Reservar / WhatsApp</a>
+      </div>
+
+      <button class="hamburger" id="btnHamburger" aria-label="Abrir menú" type="button">☰</button>
+    </div>
+
+    <div class="mobileNav" id="mobileNav">
+      <a href="#menu">Carta</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#galeria">Galería</a>
+      <a href="#eventos">Eventos</a>
+      <a href="#ubicacion">Ubicación</a>
+      <a class="btn btn--wa w100" id="btnWhatsMobile" href="#" target="_blank" rel="noopener">Reservar por WhatsApp</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="inicio" class="hero">
+    <div class="hero__bg" id="heroBg"></div>
+    <div class="container hero__grid">
+      <section class="hero__copy">
+        <h1>
+          Sabor criollo en un
+          <span class="accent">ambiente campestre</span>
+          en Huacho.
+        </h1>
+        <p class="lead" id="heroSubtitle">
+          Ideal para almuerzos familiares, grupos y fines de semana: buena sazón, espacios amplios y naturaleza.
+        </p>
+
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="#menu">Ver carta</a>
+          <a class="btn btn--wa" id="btnWhatsHero" href="#" target="_blank" rel="noopener">Reservar por WhatsApp</a>
+          <a class="btn" id="btnMaps" href="#" target="_blank" rel="noopener">Cómo llegar</a>
+        </div>
+
+        <div class="hero__chips" id="heroChips"></div>
+      </section>
+
+      <aside class="hero__card">
+        <div class="heroCard__imgWrap">
+          <img id="heroSideImg" alt="Foto del restaurante" loading="lazy">
+          <div class="heroCard__overlay"></div>
+          <div class="heroCard__txt">
+            <div class="heroCard__title">Reserva rápida</div>
+            <div class="heroCard__sub">WhatsApp • Confirmación inmediata</div>
+          </div>
+        </div>
+
+        <div class="heroCard__info">
+          <div class="miniRow"><span class="muted">📍 Dirección</span><strong id="bizAddress">—</strong></div>
+          <div class="miniRow"><span class="muted">🕒 Hoy</span><strong id="hoursCompact">—</strong></div>
+          <div class="miniRow"><span class="muted">🎉 Eventos</span><strong>Fines de semana</strong></div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Carta / platos -->
+  <section id="menu" class="section">
+    <div class="container">
+      <div class="section__head">
+        <h2>Carta destacada</h2>
+        <p>Platos recomendados.</p>
+      </div>
+
+      <div class="grid grid--cards" id="menuGrid"></div>
+    </div>
+  </section>
+
+  <!-- Experiencia -->
+  <section id="experiencia" class="section section--alt">
+    <div class="container twoCol">
+      <div>
+        <h2>La experiencia Fundo Palmira</h2>
+        <p class="para" id="aboutText">
+          Un lugar campestre para desconectarte: áreas amplias, ambiente familiar y sazón criolla para compartir.
+        </p>
+
+        <div class="features" id="featuresGrid"></div>
+      </div>
+
+      <div class="photoCard">
+        <div class="photoCard__imgWrap">
+          <img id="aboutImg" alt="Ambiente campestre" loading="lazy">
+        </div>
+        <div class="photoCard__meta">
+          <div class="metaItem">✅ Ideal para familias y grupos</div>
+          <div class="metaItem">🌿 Espacios al aire libre</div>
+          <div class="metaItem">🎶 Música / actividades (según fecha)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galería -->
+  <section id="galeria" class="section">
+    <div class="container">
+      <div class="section__head">
+        <h2>Galería</h2>
+        <p>Fotos del local y ambiente.</p>
+      </div>
+
+      <div class="gallery" id="galleryGrid"></div>
+    </div>
+  </section>
+
+  <!-- Eventos -->
+  <section id="eventos" class="section section--alt">
+    <div class="container">
+      <div class="section__head">
+        <h2>Eventos y fechas especiales</h2>
+        <p>Actividades, música en vivo, celebraciones y feriados.</p>
+      </div>
+
+      <div class="grid grid--events" id="eventsGrid"></div>
+    </div>
+  </section>
+
+  <!-- Ubicación -->
+  <section id="ubicacion" class="section">
+    <div class="container">
+      <div class="section__head">
+        <h2>Ubicación</h2>
+        <p>Encuéntranos en Huacho.</p>
+      </div>
+
+      <div class="mapGrid">
+        <div class="mapInfo">
+          <div class="infoBox">
+            <div class="infoTitle">📍 Dirección</div>
+            <div class="infoText" id="addressLong">—</div>
+          </div>
+          <div class="infoBox">
+            <div class="infoTitle">🕒 Horario</div>
+            <div class="infoText" id="hoursLong">—</div>
+          </div>
+          <div class="infoBox">
+            <div class="infoTitle">📲 Reservas</div>
+            <div class="infoText">WhatsApp / llamada (confirmación rápida)</div>
+          </div>
+
+          <div class="rowBtns">
+            <a class="btn btn--primary" id="btnMaps2" href="#" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="btn btn--wa" id="btnWhatsCTA" href="#" target="_blank" rel="noopener">Reservar por WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="mapWrap">
+          <iframe id="mapIframe" title="Mapa Fundo Palmira" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <div class="footer__brand">🌿 <span id="bizName2">Fundo Palmira</span></div>
+        <div class="footer__text">Restaurante Campestre • Huacho</div>
+      </div>
+      <div>
+        <div class="footer__title">Secciones</div>
+        <a href="#menu">Carta</a>
+        <a href="#galeria">Galería</a>
+        <a href="#ubicacion">Ubicación</a>
+      </div>
+      <div>
+        <div class="footer__title">Contacto</div>
+        <div class="footer__text">📍 <span id="bizAddress2">—</span></div>
+        <div class="footer__text">📲 WhatsApp: <span id="bizWhats">—</span></div>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      © <span id="year"></span> Fundo Palmira. Todos los derechos reservados. Designed by <a href="https://buymeacoffee.com/luxudev" target="_blank" rel="noopener"> <strong><i>  LuxuDev</i></strong>
+    </a>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a class="fab" id="fabWhats" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
