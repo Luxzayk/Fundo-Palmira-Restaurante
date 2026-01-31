@@ -593,8 +593,9 @@ a {
 
 .footer__grid {
     display: grid;
-    grid-template-columns: 1.2fr .8fr 1fr;
-    gap: 16px;
+    grid-template-columns: 1.2fr 0.8fr 1fr 0.9fr;
+    gap: 24px 32px;
+    align-items: start;
 }
 
 .footer__brand {
@@ -696,4 +697,51 @@ a {
     .cardProd__imgWrap {
         height: 200px;
     }
+}
+
+/* =========================
+   Footer Social Icons
+   ========================= */
+.socials {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.social {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, .04);
+    display: block;
+    padding: 0;
+    transition: transform .12s ease, border-color .12s ease, background .12s ease;
+}
+
+.social:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, .22);
+    background: rgba(255, 255, 255, .07);
+}
+
+.social img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 22px;
+    height: 22px;
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+    object-position: center;
+    display: block;
+}
+
+/* ✅ Para SVG negros: los vuelve blancos en tu tema oscuro.
+     Si tus SVG ya son blancos, comenta esta línea. */
+.social img {
+    filter: brightness(0) invert(1);
 }

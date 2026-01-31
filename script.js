@@ -112,7 +112,26 @@ const CONFIG = {
             title: "Cumpleaños / celebraciones",
             desc: "Separación de mesas y coordinación por WhatsApp."
         }
-    ]
+    ],
+
+    socials: [{
+            name: "Facebook",
+            url: "https://www.facebook.com/elfundopalmira", // <-- cambia esto
+            icon: "images/icons/facebook.svg" // <-- ruta a tu SVG
+        },
+        {
+            name: "Instagram",
+            url: "https://www.instagram.com/elfundopalmira?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", // <-- cambia esto
+            icon: "images/icons/instagram.svg" // <-- ruta a tu SVG
+        },
+        // Opcional: si luego tienes TikTok
+        // {
+        //   name: "TikTok",
+        //   url: "https://tiktok.com/@tu_cuenta",
+        //   icon: "images/icons/tiktok.svg"
+        // }
+    ],
+
 };
 
 // ---------- Helpers ----------
@@ -292,6 +311,35 @@ function renderEvents() {
     });
 }
 
+function renderSocials() {
+    const wrap = qs("#socials");
+    if (!wrap) return;
+
+    wrap.innerHTML = "";
+
+    (CONFIG.socials || []).forEach(s => {
+        const a = document.createElement("a");
+        a.className = "social";
+        a.href = s.url;
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.setAttribute("aria-label", s.name);
+        a.title = s.name;
+
+        const img = document.createElement("img");
+        img.src = s.icon;
+        img.alt = s.name;
+        img.loading = "lazy";
+        img.onerror = () => {
+            a.style.display = "none";
+        };
+
+        a.appendChild(img);
+        wrap.appendChild(a);
+    });
+}
+
+
 function setupWhatsLinks() {
     const msg =
         `Hola 👋, quisiera reservar en *${CONFIG.businessName}*.\n` +
@@ -331,8 +379,10 @@ function init() {
     renderFeatures();
     renderGallery();
     renderEvents();
+    renderSocials();
     setupWhatsLinks();
     setupMobileNav();
+
 
     setInterval(renderSchedule, 60000);
 }
