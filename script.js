@@ -1,8 +1,8 @@
 const CONFIG = {
     businessName: "Fundo Palmira",
     address: "Campiña, Av. Centenario 1587, Huacho",
-    phoneTel: "+51 900 000 000", // cámbialo
-    whatsappNumber: "51900000000", // cámbialo (sin +, solo números)
+    phoneTel: "+51 900 000 000", // para cambiar el número de teléfono
+    whatsappNumber: "51900000000", // para cambiar el número de WhatsApp (sin +, solo números)
     mapsLink: "https://maps.app.goo.gl/DTMoVSpuYsPeqQJT7",
 
     // ✅ IMÁGENES: solo cambia rutas y listo
@@ -48,7 +48,7 @@ const CONFIG = {
             close: "17:30"
         }
     },
-
+    // ✅ PLATOS: solo cambia nombres, descripciones y precios
     featuredMenu: [{
             name: "Chancho al palo",
             desc: "Clásico campestre, ideal para compartir.",
@@ -74,7 +74,7 @@ const CONFIG = {
             image: "images/platos/parrilla.jpg"
         }
     ],
-
+    // ✅ CARACTERÍSTICAS: solo cambia nombres y descripciones
     features: [{
             title: "Espacios amplios",
             desc: "Zonas al aire libre para disfrutar con calma."
@@ -113,7 +113,7 @@ const CONFIG = {
             desc: "Separación de mesas y coordinación por WhatsApp."
         }
     ],
-
+    // ✅ REDES SOCIALES: solo cambia nombres, URLs y rutas a tus SVGs
     socials: [{
             name: "Facebook",
             url: "https://www.facebook.com/elfundopalmira", // <-- cambia esto
@@ -131,6 +131,33 @@ const CONFIG = {
         //   icon: "images/icons/tiktok.svg"
         // }
     ],
+    // ✅ FAQ: solo cambia preguntas y respuestas
+    faq: [{
+            q: "¿Atienden con reserva o por orden de llegada?",
+            a: "Atendemos ambas modalidades. Recomendamos reservar por WhatsApp si vienes en familia, en grupo o en fechas festivas."
+        },
+        {
+            q: "¿Cuál es el horario de atención?",
+            a: "El horario puede variar por temporada o feriados. Escríbenos por WhatsApp y te confirmamos el horario del día."
+        },
+        {
+            q: "¿Qué métodos de pago aceptan?",
+            a: "Puedes pagar en efectivo y también por Yape/Plin (según disponibilidad). Confírmalo al reservar."
+        },
+        {
+            q: "¿Puedo ir con grupos grandes o hacer una celebración?",
+            a: "Sí. Para grupos y celebraciones (cumpleaños, reuniones, etc.) es mejor reservar con anticipación para separar mesas."
+        },
+        {
+            q: "¿Tienen estacionamiento?",
+            a: "Generalmente hay espacio disponible cerca del local. Para días de alta afluencia (domingos/feriados), recomendamos llegar temprano."
+        },
+        {
+            q: "¿Se permiten mascotas?",
+            a: "Depende del área y de la fecha. Escríbenos por WhatsApp y te confirmamos la política actual para tu visita."
+        }
+    ],
+
 
 };
 
@@ -248,15 +275,15 @@ function renderMenu() {
         card.className = "cardProd";
         card.innerHTML = `
         <div class="cardProd__imgWrap">
-          <img alt="${item.name}" loading="lazy">
+            <img alt="${item.name}" loading="lazy">
         </div>
         <div class="cardProd__body">
-          <h3 class="cardProd__title">${item.name}</h3>
-          <p class="cardProd__desc">${item.desc}</p>
-          <div class="cardProd__row">
+            <h3 class="cardProd__title">${item.name}</h3>
+            <p class="cardProd__desc">${item.desc}</p>
+            <div class="cardProd__row">
             <div class="price">${money(item.price)}</div>
-            <button class="btn btn--wa" type="button">Pedir</button>
-          </div>
+                <button class="btn btn--wa" type="button">Pedir</button>
+            </div>
         </div>
       `;
 
@@ -310,6 +337,50 @@ function renderEvents() {
         grid.appendChild(el);
     });
 }
+
+function renderFAQ() {
+    const wrap = qs("#faqList");
+    if (!wrap) return;
+
+    wrap.innerHTML = "";
+
+    (CONFIG.faq || []).forEach((item, i) => {
+        const faq = document.createElement("div");
+        faq.className = "faqItem";
+
+        faq.innerHTML = `
+        <button class="faqBtn" type="button" aria-expanded="false" aria-controls="faq-a-${i}">
+          <span class="faqQ">
+            <span class="faqIcon">❓</span>
+            <span>${item.q}</span>
+          </span>
+          <span class="faqChevron">⌄</span>
+        </button>
+  
+        <div class="faqA" id="faq-a-${i}">
+          <div class="faqA__inner">${item.a}</div>
+        </div>
+      `;
+
+        const btn = faq.querySelector(".faqBtn");
+        const ans = faq.querySelector(".faqA");
+
+        btn.addEventListener("click", () => {
+            const isOpen = faq.classList.toggle("is-open");
+            btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+
+            // animación suave: ajusta max-height según contenido
+            if (isOpen) {
+                ans.style.maxHeight = ans.scrollHeight + "px";
+            } else {
+                ans.style.maxHeight = "0px";
+            }
+        });
+
+        wrap.appendChild(faq);
+    });
+}
+
 
 function renderSocials() {
     const wrap = qs("#socials");
@@ -379,6 +450,7 @@ function init() {
     renderFeatures();
     renderGallery();
     renderEvents();
+    renderFAQ();
     renderSocials();
     setupWhatsLinks();
     setupMobileNav();

@@ -745,3 +745,84 @@ a {
 .social img {
     filter: brightness(0) invert(1);
 }
+
+/* =========================
+   FAQ
+   ========================= */
+.faq {
+    display: grid;
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.faqItem {
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, .04);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.faqBtn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 14px;
+    background: transparent;
+    color: var(--text);
+    border: none;
+    cursor: pointer;
+    font-weight: 900;
+    text-align: left;
+}
+
+.faqBtn:hover {
+    background: rgba(255, 255, 255, .03);
+}
+
+.faqQ {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.faqIcon {
+    width: 34px;
+    height: 34px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, .06);
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+}
+
+.faqChevron {
+    font-size: 18px;
+    opacity: .85;
+    transition: transform .15s ease;
+    flex: 0 0 auto;
+}
+
+.faqItem.is-open .faqChevron {
+    transform: rotate(180deg);
+}
+
+.faqA {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .2s ease;
+    border-top: 1px solid transparent;
+}
+
+.faqItem.is-open .faqA {
+    border-top: 1px solid var(--line);
+}
+
+.faqA__inner {
+    padding: 12px 14px 14px;
+    color: var(--muted);
+    line-height: 1.6;
+    font-size: 14px;
+}
